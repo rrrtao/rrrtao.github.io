@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>比特笔</title>
   
-  
+  <subtitle>个人笔记</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yqi6.com/"/>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>MySQL数据库开发规范</title>
-    <link href="http://yqi6.com/2020/03/27/3/"/>
-    <id>http://yqi6.com/2020/03/27/3/</id>
+    <link href="http://yqi6.com/2020-03/3.html"/>
+    <id>http://yqi6.com/2020-03/3.html</id>
     <published>2020-03-27T00:50:26.000Z</published>
     <updated>2020-03-28T07:55:13.000Z</updated>
     
@@ -46,8 +46,8 @@
   
   <entry>
     <title>start.aliyun.com 正式上线！极速构建 Spring Cloud 应用</title>
-    <link href="http://yqi6.com/2020/03/25/2/"/>
-    <id>http://yqi6.com/2020/03/25/2/</id>
+    <link href="http://yqi6.com/2020-03/2.html"/>
+    <id>http://yqi6.com/2020-03/2.html</id>
     <published>2020-03-25T01:33:38.000Z</published>
     <updated>2020-03-28T07:55:02.000Z</updated>
     
@@ -74,8 +74,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yqi6.com/2020/03/15/1/"/>
-    <id>http://yqi6.com/2020/03/15/1/</id>
+    <link href="http://yqi6.com/2020-03/1.html"/>
+    <id>http://yqi6.com/2020-03/1.html</id>
     <published>2020-03-15T08:22:20.000Z</published>
     <updated>2020-03-28T07:54:48.000Z</updated>
     
