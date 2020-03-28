@@ -2,21 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yqi6.com/2020-03/3.html</loc>
+    <loc>http://yqi6.com/2020-03-27-3.html</loc>
     
     <lastmod>2020-03-28T07:55:13.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yqi6.com/2020-03/2.html</loc>
+    <loc>http://yqi6.com/2020-03-25-2.html</loc>
     
     <lastmod>2020-03-28T07:55:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yqi6.com/2020-03/1.html</loc>
+    <loc>http://yqi6.com/2020-03-15-1.html</loc>
     
     <lastmod>2020-03-28T07:54:48.000Z</lastmod>
     
@@ -37,13 +37,6 @@
   </url>
   
   <url>
-    <loc>http://yqi6.com/books/index.html</loc>
-    
-    <lastmod>2020-03-17T04:53:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yqi6.com/about/index.html</loc>
     
     <lastmod>2020-03-17T04:53:56.000Z</lastmod>
@@ -51,7 +44,7 @@
   </url>
   
   <url>
-    <loc>http://yqi6.com/repository/index.html</loc>
+    <loc>http://yqi6.com/books/index.html</loc>
     
     <lastmod>2020-03-17T04:53:56.000Z</lastmod>
     
@@ -59,6 +52,13 @@
   
   <url>
     <loc>http://yqi6.com/links/index.html</loc>
+    
+    <lastmod>2020-03-17T04:53:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yqi6.com/repository/index.html</loc>
     
     <lastmod>2020-03-17T04:53:56.000Z</lastmod>
     
