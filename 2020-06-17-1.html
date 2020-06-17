@@ -29,7 +29,7 @@
 <meta property="og:description" content="环境   环境 说明    宿主机 win10（16G）   VMware 15.5.1   centOS 7 下载地址   虚拟机   环境 说明    10.0.0.128 master-k8s 4C4G   10.0.0.129 node2-k8s 4C4G   10.0.0.130 node3-k8s 4C4G    先在 master-k8s 上安装基本软件服务，然后在克隆node2-k">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-17T04:37:39.000Z">
-<meta property="article:modified_time" content="2020-06-17T04:45:22.175Z">
+<meta property="article:modified_time" content="2020-06-17T04:48:21.294Z">
 <meta property="article:author" content="比特笔">
 <meta property="article:tag" content="k8s">
 <meta name="twitter:card" content="summary">
@@ -446,11 +446,11 @@
 <li>systemctl stop firewalld</li>
 <li>systemctl disable firewalld</li>
 </ul>
-<p>####修改hostname<br>执行命令： vi /etc/hostname<br>10.0.0.128 改成 master-k8s<br>10.0.0.129 改成 node2-k8s<br>10.0.0.130 改成 node3-k8s</p>
-<p>####修改host文件<br>vi /etc/hosts</p>
+<h4 id="修改hostname"><a href="#修改hostname" class="headerlink" title="修改hostname"></a>修改hostname</h4><p>执行命令： vi /etc/hostname<br>10.0.0.128 改成 master-k8s<br>10.0.0.129 改成 node2-k8s<br>10.0.0.130 改成 node3-k8s</p>
+<h4 id="修改host文件"><a href="#修改host文件" class="headerlink" title="修改host文件"></a>修改host文件</h4><p>vi /etc/hosts</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">::1         localhost localhost.localdomain localhost6 localhost6.localdomain6</span><br><span class="line">10.0.0.128  master-k8s</span><br><span class="line">10.0.0.129  node2-k8s</span><br><span class="line">10.0.0.130  node3-k8s</span><br></pre></td></tr></table></figure>
 
-<p>####禁用swap<br>执行命令：</p>
+<h4 id="禁用swap"><a href="#禁用swap" class="headerlink" title="禁用swap"></a>禁用swap</h4><p>执行命令：</p>
 <ul>
 <li>swapoff -a</li>
 <li>vi /etc/fstab</li>
@@ -469,7 +469,7 @@
 <li>systemctl daemon-reload</li>
 <li>systemctl restart docker</li>
 </ul>
-<p>添加K8s 国内镜像源</p>
+<p>添加K8s国内镜像源</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat&gt;&gt;&#x2F;etc&#x2F;yum.repos.d&#x2F;kubrenetes.repo&lt;&lt;EOF</span><br><span class="line">[kubernetes]</span><br><span class="line">name&#x3D;Kubernetes Repo</span><br><span class="line">baseurl&#x3D;https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;kubernetes&#x2F;yum&#x2F;repos&#x2F;kubernetes-el7-x86_64&#x2F;</span><br><span class="line">gpgcheck&#x3D;0</span><br><span class="line">gpgkey&#x3D;https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;kubernetes&#x2F;yum&#x2F;doc&#x2F;yum-key.gpg</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 
 <h4 id="安装K8s所需要的3个组件"><a href="#安装K8s所需要的3个组件" class="headerlink" title="安装K8s所需要的3个组件"></a>安装K8s所需要的3个组件</h4><p>执行命令：</p>
