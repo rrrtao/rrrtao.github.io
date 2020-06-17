@@ -29,7 +29,7 @@
 <meta property="og:description" content="环境   环境 说明    宿主机 win10（16G）   VMware 15.5.1   centOS 7 下载地址   虚拟机   环境 说明    10.0.0.128 master-k8s 4C4G   10.0.0.129 node2-k8s 4C4G   10.0.0.130 node3-k8s 4C4G    先在 master-k8s 上安装基本软件服务，然后在克隆node2-k">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-17T04:37:39.000Z">
-<meta property="article:modified_time" content="2020-06-17T04:41:30.450Z">
+<meta property="article:modified_time" content="2020-06-17T04:45:22.175Z">
 <meta property="article:author" content="比特笔">
 <meta property="article:tag" content="k8s">
 <meta name="twitter:card" content="summary">
@@ -501,7 +501,7 @@
 <li>bash /etc/sysconfig/modules/ipvs.modules</li>
 <li>lsmod | grep -E “ip_vs|nf_conntrack_ipv4”</li>
 </ul>
-<p><strong>* 上面的步骤需要在3台centos虚拟机都得执行的！*</strong> </p>
+<p><strong>* 上面的步骤需要在3台centos虚拟机都得执行的！[end] *</strong> </p>
 <p>建议：现在master-k8s上完成配置，然后克隆，修改hostname</p>
 <hr>
 <h2 id="下面的步骤只在master-k8s-机器上操作"><a href="#下面的步骤只在master-k8s-机器上操作" class="headerlink" title="下面的步骤只在master-k8s 机器上操作"></a>下面的步骤只在master-k8s 机器上操作</h2><p>通过如下指令创建默认的kubeadm-config.yaml文件：</p>
@@ -513,8 +513,7 @@
 <p>下面有注释的地方就是要修改的地方！</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">[root@docker-server1 ~]# vi kubeadm-config.yaml</span><br><span class="line">apiVersion: kubeadm.k8s.io&#x2F;v1beta2</span><br><span class="line">bootstrapTokens:</span><br><span class="line">- groups:</span><br><span class="line">  - system:bootstrappers:kubeadm:default-node-token</span><br><span class="line">  token: abcdef.0123456789abcdef</span><br><span class="line">  ttl: 24h0m0s</span><br><span class="line">  usages:</span><br><span class="line">  - signing</span><br><span class="line">  - authentication</span><br><span class="line">kind: InitConfiguration</span><br><span class="line">localAPIEndpoint:</span><br><span class="line">  advertiseAddress: 10.0.0.128  #master节点的IP</span><br><span class="line">  bindPort: 6443</span><br><span class="line">nodeRegistration:</span><br><span class="line">  criSocket: &#x2F;var&#x2F;run&#x2F;dockershim.sock</span><br><span class="line">  name: 10.0.0.128                       #修改为IP地址，如果使用域名，必须保证解析正常</span><br><span class="line">  taints:</span><br><span class="line">  - effect: NoSchedule</span><br><span class="line">    key: node-role.kubernetes.io&#x2F;master</span><br><span class="line">---</span><br><span class="line">apiServer:</span><br><span class="line">  timeoutForControlPlane: 4m0s</span><br><span class="line">apiVersion: kubeadm.k8s.io&#x2F;v1beta2</span><br><span class="line">certificatesDir: &#x2F;etc&#x2F;kubernetes&#x2F;pki</span><br><span class="line">clusterName: kubernetes</span><br><span class="line">controllerManager: &#123;&#125;</span><br><span class="line">dns:</span><br><span class="line">  type: CoreDNS</span><br><span class="line">etcd:</span><br><span class="line">  local:</span><br><span class="line">    dataDir: &#x2F;var&#x2F;lib&#x2F;etcd                       #把etcd容器的目录挂载到本地的&#x2F;var&#x2F;lib&#x2F;etcd目录下，防止数据丢失</span><br><span class="line">imageRepository: registry.cn-hangzhou.aliyuncs.com&#x2F;google_containers          #镜像仓库地址</span><br><span class="line">kind: ClusterConfiguration</span><br><span class="line">kubernetesVersion: v1.18.3                     #Kubernetes软件版本</span><br><span class="line">networking:</span><br><span class="line">  dnsDomain: cluster.local</span><br><span class="line">  serviceSubnet: 10.96.0.0&#x2F;12</span><br><span class="line">  podSubnet: 10.244.0.0&#x2F;16        #添加这个内容</span><br><span class="line">scheduler: &#123;&#125;</span><br></pre></td></tr></table></figure>
 
-<p>####预先下载镜像</p>
-<p>执行命令：</p>
+<h4 id="预先下载镜像"><a href="#预先下载镜像" class="headerlink" title="预先下载镜像"></a>预先下载镜像</h4><p>执行命令：</p>
 <ul>
 <li>kubeadm config images pull –config kubeadm-config.yaml</li>
 </ul>
@@ -522,8 +521,7 @@
 <ul>
 <li>echo ‘1’ &gt; /proc/sys/net/bridge/bridge-nf-call-iptables</li>
 </ul>
-<p>####安装matser节点</p>
-<p>执行命令：</p>
+<h4 id="安装matser节点"><a href="#安装matser节点" class="headerlink" title="安装matser节点"></a>安装matser节点</h4><p>执行命令：</p>
 <ul>
 <li>kubeadm init –config kubeadm-config.yaml</li>
 </ul>
@@ -553,8 +551,7 @@
 <li>sudo kubectl get nodes</li>
 </ul>
 <p>你会发现 Status 是 NotReady，因为没有安装网络插件！</p>
-<p>####安装网络插件flannel</p>
-<p>因为上面我们安装的的k8s的版本是 v 1.18.3</p>
+<h4 id="安装网络插件flannel"><a href="#安装网络插件flannel" class="headerlink" title="安装网络插件flannel"></a>安装网络插件flannel</h4><p>因为上面我们安装的的k8s的版本是 v 1.18.3</p>
 <p>这个版本对应的 flannel 版本是：v0.12.0</p>
 <p>因为由于某种不可抗力 一定得先下载好docker镜像！</p>
 <ul>
