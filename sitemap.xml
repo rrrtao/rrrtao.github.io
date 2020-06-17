@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://btbib.com/2020-06-17-1.html</loc>
+    
+    <lastmod>2020-06-17T04:38:56.220Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://btbib.com/2020-05-11-1.html</loc>
     
     <lastmod>2020-05-11T07:33:25.000Z</lastmod>
@@ -58,14 +65,14 @@
   </url>
   
   <url>
-    <loc>http://btbib.com/repository/index.html</loc>
+    <loc>http://btbib.com/links/index.html</loc>
     
     <lastmod>2020-03-17T04:53:56.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://btbib.com/links/index.html</loc>
+    <loc>http://btbib.com/repository/index.html</loc>
     
     <lastmod>2020-03-17T04:53:56.000Z</lastmod>
     
